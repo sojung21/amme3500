@@ -1,10 +1,11 @@
+% Q3 Auto-loaded variables for Simulink model
 
 %% ASSUMPTIONS
 
 % Two wheeled-robot
 % Negligible mass of robot
 % High gear ratio between motor and wheel 
-%
+% Constant velocity input
 
 %% INPUTS
 
@@ -25,12 +26,3 @@ v_R = w*(r_P+(L/2)); % Linear velocity of wheel furthest from IC [m/s]
 
 w_L = v_L/r;    % Angular velocity of wheel closest to IC [rad/s]
 w_R = v_R/r;    % Angular velocity of wheel furthest from IC [rad/s]
-
-
-%% SIMULATION
-
-s= tf('s');
-G = 23.05/(0.12*s +1);
-T = feedback(G,1);
-opt = stepDataOptions('StepAmplitude',w_L);
-step(T,opt);

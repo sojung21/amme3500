@@ -10,4 +10,4 @@ G = K/(J*s^2 + c*s + K); % No disturbance
 
 % rlocus(G);
 % figure
-% stepplot(feedback(G,1));
+stepplot(G);

@@ -18,7 +18,8 @@ D_R = mc*mw*(omega.^4) - (ks*mc+kw*mc+ks*mw)*(omega.^2) + ks*kw;
 D_I = kd*kw*(omega.^1) - (kd*mc+kd*mw)*(omega.^3);
 
 M = sqrt((N_R.*D_R + N_I.*D_I).^2 + (-N_R.*D_I+N_I.*D_R).^2)./(D_R.^2 + D_I.^2);
-phi = atand(N_I./N_R);
+phi = atan2((N_I.*D_R-N_R.*D_I),(N_R.*D_R + N_I.*D_I));
+phi = 180/pi*unwrap(phi);
 
 this = M*sin(omega*t + phi);
 
